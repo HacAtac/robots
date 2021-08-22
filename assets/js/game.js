@@ -16,6 +16,7 @@ var fight = function(enemyName) {
     while(playerHealth > 0 && enemyHealth > 0) {
     //ask player if they'd like to fight or run
     var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT' or 'SKIP' to choose.");
+   
     // if player picks "skip" confirm and then stop the loop
     if (promptFight === "skip" || promptFight === "SKIP") {
         //confirm player wants to skip
@@ -30,6 +31,7 @@ var fight = function(enemyName) {
             break;
         }
     }
+    
     // if player choses to fight, then fight
     if (promptFight === "fight" || promptFight === "FIGHT") {
         //Subtract the value of `playerAttack` from the value of `enemyHealth` and use that result to update the value in the `enemyHealth` variable
@@ -74,7 +76,28 @@ var fight = function(enemyName) {
 };
 
 //execute funtion
+    
     for(var i = 0; i < enemyNames.length; i++){
+        if (playerHealth > 0) {
+            // let player know what roudn they are in, remember that arrays start at index 0 so need to add i + 1
+            window.alert("welcome to robot glads! Round " + ( i + 1 ) );
+
+            //pick new enemy to fight based on the index of trhe enemyNames array
+            var pickedEnemyName = enemyNames[i];
+
+            //reset enemyHealth before starting new fight
+            enemyHealth = 50;
+
+            //use debugger to pause script from running and check what goin on
+            // debugger;
+
+            //pass the pickedEnemyName variable's value into the fight function, where it will assuem the value of the enemyName parameter
+            fight(pickedEnemyName);
+        }
+        else {
+            window.alert("you have lost your robot in battle! Game over!");
+            break;
+        }
         var pickedEnemyName = enemyNames[i];
         enemyHealth = 50;
         fight(pickedEnemyName);
