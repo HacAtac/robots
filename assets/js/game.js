@@ -74,10 +74,14 @@ var fight = function(enemyName) {
 
 
 };
-
-//execute funtion
-    
-    for(var i = 0; i < enemyNames.length; i++){
+    //function to start a new game
+    var startGame = function() {
+        // reset player stats
+        playerHealth = 100;
+        playerAttack = 10;
+        playerMoney = 10;
+        //execute funtfor(var i = 0; i < enemyNames.length; i++){
+        for (var i = 0; i < enemyNames.length; i++) {
         if (playerHealth > 0) {
             // let player know what roudn they are in, remember that arrays start at index 0 so need to add i + 1
             window.alert("welcome to robot glads! Round " + ( i + 1 ) );
@@ -98,7 +102,27 @@ var fight = function(enemyName) {
             window.alert("you have lost your robot in battle! Game over!");
             break;
         }
-        var pickedEnemyName = enemyNames[i];
-        enemyHealth = 50;
-        fight(pickedEnemyName);
     }
+       // play again
+       startGame();
+        //function to end the entire game
+        var endGame = function() {
+            window.alert("The game has now ended. Lets see how you did!");
+        var playAgainConfirm= window.confirm("Would you like to play again?");
+
+        if (playAgainConfirm) {
+            //restart game
+            startGame();
+        }
+        else {
+            window.alert("Thank you for p laying Robot Glads! COme back soon!");
+        }
+        }
+        //after the loops ends player is either out of health or enemies to fight end game
+        endGame();
+    };
+
+    // start the game when the page loads
+startGame();
+
+        
